@@ -1,0 +1,3 @@
+add firebase to android
+firebase to ios
+initialize app

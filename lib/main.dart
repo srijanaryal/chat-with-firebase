@@ -1,4 +1,5 @@
 import 'package:chat/helper/helper_function.dart';
+import 'package:chat/pages/home_page.dart';
 import 'package:chat/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,7 +34,9 @@ class _MyAppState extends State<MyApp> {
   void getUserLoggedInStatus() async {
     await HelperFunctions.getUserLoggedinStatus().then((value) {
       if (value != null) {
-        _isSignedIn = false;
+        setState(() {
+          _isSignedIn = value;
+        });
       }
     });
   }
@@ -42,9 +45,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(),
-      home: _isSignedIn ? Home() : LogInPage(),
-    );
+        title: 'Flutter Demo', theme: ThemeData(), home: HomePage());
   }
 }
